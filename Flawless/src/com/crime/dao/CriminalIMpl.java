@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.crime.Exception.USerdefined;
 import com.crime.bean.Criminal;
 import com.masai.utility.DButil;
 
 public class CriminalIMpl implements Criminaldao {
 
 	@Override
-	public String Registercriminal(Criminal criminal) {
+	public String Registercriminal(Criminal criminal) throws USerdefined {
 		String message="Not updated";
 		try (Connection conn=DButil.provideconnection()){
 			
@@ -26,6 +27,10 @@ public class CriminalIMpl implements Criminaldao {
 			int c=ps.executeUpdate();
 			if(c>0) {
 				message="updated";
+			}
+			else {
+				 USerdefined us=new USerdefined("NOT Updated");
+				 throw us;
 			}
 			
 		} catch (SQLException e) {

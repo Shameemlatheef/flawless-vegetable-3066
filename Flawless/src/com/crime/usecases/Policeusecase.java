@@ -2,6 +2,7 @@ package com.crime.usecases;
 
 import java.util.Scanner;
 
+import com.crime.Exception.USerdefined;
 import com.crime.dao.Policedao;
 import com.crime.dao.Policedaoimpl;
 
@@ -15,7 +16,13 @@ public static void main(String[] args) {
 	
 	Policedao p=new Policedaoimpl();
 	
-	System.out.println(p.login(pname, password));
+	try {
+		System.out.println(p.login(pname, password));
+	} catch (USerdefined e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 	
 }
 }

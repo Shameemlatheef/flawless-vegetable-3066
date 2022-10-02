@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.crime.Exception.USerdefined;
 import com.crime.bean.Criminal;
 import com.masai.utility.DButil;
 
 public class Policedaoimpl implements Policedao{
 
 	@Override
-	public String login(String pname, String password) {
+	public String login(String pname, String password) throws USerdefined {
 		//Police pol=null;
 		String message="incorect details";
 		boolean sd=false;
@@ -91,12 +92,22 @@ public class Policedaoimpl implements Policedao{
 			 
 			 /////search option
 			 
+			System.out.println("Search solved cases");
+			SearchCaseDao sao=new SearchcaseDaoimpl();
+		sao.Solved();
+			
+			
 			 
 			 
 			 
 			 
 			 
 			 
+			 
+		 }
+		 else {
+			 USerdefined us=new USerdefined("Invalid Option");
+			 throw us;
 		 }
 			
 		}
